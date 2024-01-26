@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day Ejs</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- <h1 style="color: green">Todo List</h1> -->
+    <div class="box" id="heading">
+      <h1><%= listTitle %></h1>
+    </div>
+
+    <div class="box">
+      <% for (let i = 0; i < newListItems.length; i++) { %>
+      <div class="item">
+        <input type="checkbox" />
+        <p><%= newListItems[i].name%></p>
+        <form action="/del" method="post">
+          <input
+            class="invisible"
+            type="text"
+            name="delItem"
+            value="<%= newListItems[i].name %>"
+          />
+          <button
+            type="submit"
+            class="deletebtn"
+            name="delbranch"
+            value="<%=listTitle%>"
+          >
+            X
+          </button>
+        </form>
+      </div>
+      <% } %>
+      <form class="item" action="/" method="post">
+        <input
+          type="text"
+          name="newItem"
+          placeholder="Add New Item"
+          autocomplete="off"
+        />
+        <button
+          class="addbutton"
+          type="submit"
+          name="list"
+          value="<%=listTitle%>"
+        >
+          +
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
