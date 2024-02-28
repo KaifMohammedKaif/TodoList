@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -14,7 +15,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb+srv://mokaif925:Mkaifisbest1@cluster0.cyk6i4z.mongodb.net/todoList");
+  await mongoose.connect(process.env.MONGO_URL);
 }
 
 const worklist = {
@@ -95,6 +96,12 @@ app.get("/work", async (req, res) => {
   res.render("list", { listTitle: "Work List", newListItems: workList });
 });
 
-app.listen(3000, () => {
+let port = process.env.PORT;
+
+if (port == null || port == "") {
+  port = 3000;
+}
+
+app.listen(port, () => {
   console.log("server started ya hoo");
 });
