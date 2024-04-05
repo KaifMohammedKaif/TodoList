@@ -1,3 +1,9 @@
-# Todo list
+# TodoList App
 
-This is a simple todo list which is made using Nodejs Expressjs and Mongodb.
+This is a simple TodoList application built using Node.js, Express.js, MongoDB, and EJS.
+
+## Features
+
+- Add, delete, and update tasks
+- Mark tasks as completed
+- Responsive design using EJS templates
